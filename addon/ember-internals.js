@@ -3,12 +3,13 @@ import {
   dependencySatisfies,
   importSync,
 } from '@embroider/macros';
+import Ember from 'ember';
 
 let getViewBounds;
 if (macroCondition(dependencySatisfies('ember-source', '>=3.27.0'))) {
   ({ getViewBounds } = importSync('@ember/-internals/views'));
 } else {
-  ({ getViewBounds } = window.Ember.ViewUtils);
+  ({ getViewBounds } = Ember.ViewUtils);
 }
 
 // Traverses down to the child routeInfo with the given name.
